@@ -12,4 +12,5 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /etc/
   && apt-get update \
   && apt-get install -y postgresql-9.4-pglogical postgresql-9.4-pglogical-output \
   && echo "host    all                  all                     0.0.0.0/0       md5" >> /var/lib/postgresql/data/pg_hba.conf \
-  && echo "shared_preload_libraries = 'pglogical'" >> /var/lib/postgresql/data/postgresql.conf
+  && echo "shared_preload_libraries = 'pglogical'" >> /var/lib/postgresql/data/postgresql.conf \
+  && sed -i 's/max_connections = 100/max_connections = 200/' /var/lib/postgresql/data/postgresql.conf
